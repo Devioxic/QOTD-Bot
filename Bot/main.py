@@ -17,7 +17,12 @@ class Bot(discord.Bot):
 
     @tasks.loop(seconds=60)
     async def send_daily_question(self): 
-        if self.data.get_next_question_time() > time():
+        next_question_time = self.data.get_next_question_time()
+        if not next_question_time:
+            self.data.set_next_question_time(time() + 60 * 60 * 24)
+            return
+        
+        if next_question_time > time():
             return
         channel_id = self.data.get_channel()
         if not channel_id:
