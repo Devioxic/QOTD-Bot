@@ -48,11 +48,11 @@ class Commands(commands.Cog):
         if not self.can_use_command(ctx.author):
                     await self.no_perms(ctx)
                     return
-                
-        if not self.data.is_a_question(id):
+        try:
+            self.data.remove_question(id)
+        except:
             await ctx.respond("Question not found!", ephemeral=True)
             return
-        self.data.remove_question(id)
         await ctx.respond("Question removed!", ephemeral=True)
 
     @commands.slash_command(name="get_questions", description="see all questions")
