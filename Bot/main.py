@@ -22,7 +22,7 @@ class Bot(discord.Bot):
             self.data.set_next_question_time(time() + 60 * 60 * 24)
             return
         
-        next_question_time = int(next_question_time.decode("utf-8"))
+        next_question_time = int(float(next_question_time.decode("utf-8")))
         
         if next_question_time > time():
             return
