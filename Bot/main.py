@@ -36,7 +36,7 @@ class Bot(discord.Bot):
         if not question:
             return
         question = question.decode("utf-8")
-        message = await channel.send(f"<@&1193292211698274484> \n <:LGS:1206330526323966012> QUESTION OF THE DAY <:LGS:1206330526323966012> \n {question} \n Drop your answers in the attached thread below")
+        message = await channel.send(f"||<@&1193292211698274484>|| \n\n <:LGS:1206330526323966012> QUESTION OF THE DAY <:LGS:1206330526323966012> \n\n {question} \n\n Drop your answers in the attached thread below")
         
         await message.create_thread(name="Answers")
 
