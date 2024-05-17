@@ -62,6 +62,11 @@ class Commands(commands.Cog):
                     return
                 
         questions = self.data.get_all_questions()
+
+        if not questions:
+            await ctx.respond("No questions found!", ephemeral=True)
+            return
+
         embeds = []
 
         for i, question in questions.items():
